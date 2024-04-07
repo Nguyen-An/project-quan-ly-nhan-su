@@ -1,0 +1,59 @@
+<div class="container-page">
+    <div class="title">Quản lý hồ sơ nhân viên</div>
+    <div class="action">
+        <div class="btn">Thêm mới</div>
+        <div class="search">
+            <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+                <nz-form-item class="input-search">
+                    <nz-form-control>
+                        <input id="note" type="text" nz-input formControlName="search" placeholder="Tìm kiếm" />
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+        </div>
+
+
+    </div>
+    <div class="table">
+        <nz-table #fixedTable [nzData]="listOfData" [nzScroll]="{ x: '1150px', y: '330px' }" [nzShowPagination]="false">
+            <thead>
+                <tr>
+                    <th nzWidth="80px" nzLeft>STT</th>
+                    <th nzLeft>Tên nhân viên</th>
+                    <th>Mã nhân viên</th>
+                    <th>Chức vụ</th>
+                    <th>Trạng thái</th>
+                    <th>Hợp đồng lao động</th>
+                    <th>Mức lương</th>
+                    <th>Mã lương</th>
+                    <th>Số điện thoại</th>
+                    <th>Email</th>
+                    <th>CCCD</th>
+                    <th nzWidth="80px" nzRight>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of fixedTable.data; index as i">
+                    <td nzWidth="80px" nzLeft>{{ i }}</td>
+                    <td nzLeft>{{ data.age }}</td>
+                    <td>{{ data.address }}</td>
+                    <td>{{ data.address }}</td>
+                    <td>{{ data.address }}</td>
+                    <td>{{ data.address }}</td>
+                    <td>{{ data.address }}</td>
+                    <td>{{ data.address }}</td>
+                    <td>{{ data.address }}</td>
+                    <td>{{ data.address }}</td>
+                    <td>{{ data.address }}</td>
+                    <td nzWidth="80px" nzRight>
+                        <span nz-icon nzType="edit" nzTheme="outline"></span>
+                        <span nz-icon nzType="delete" nzTheme="outline"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+        <div class="paging">
+            <nz-pagination [nzPageIndex]="1" [nzTotal]="50"></nz-pagination>
+        </div>
+    </div>
+</div>

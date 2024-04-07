@@ -1,0 +1,70 @@
+::ng-deep{
+    nz-input-group{
+        border-radius: 20px !important;
+        color: #4d4d4d !important;
+        background: white !important;
+        box-shadow: 0 0 2em #e6e9f9 !important;
+        padding: 10px 10px !important;
+    }
+}
+
+.container-login {
+    background-image: url('../../../assets/image/background-login.jpg');
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+
+    .login {
+        width: 364px;
+        height: 100vh;
+        padding: 15vh 32px;
+        margin: auto;
+        background: rgba(221, 234, 249, 0.9);
+
+        .logo {
+            text-align: center;
+
+            img {
+                width: 100px;
+            }
+        }
+
+        .title {
+            text-align: center;
+            color: #2271dd;
+            font-weight: 500;
+            margin: 24px 0;
+        }
+
+        .button-login {
+            width: 100%;
+            padding: 1em;
+            background: #3e4684;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .button-login:hover {
+            opacity: 0.9;
+            cursor: pointer;
+        }
+
+        .action {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85em;
+            color: #5e5e5e;
+            padding-bottom: 10em;
+
+            .action-btn:hover{
+                color: #3e4684;
+                cursor: pointer;
+            }
+        }
+
+    }
+}
