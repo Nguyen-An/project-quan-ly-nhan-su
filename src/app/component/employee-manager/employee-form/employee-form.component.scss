@@ -1,0 +1,15 @@
+@import url('../../../../assets/scss/modal.scss');
+
+::ng-deep{
+    .open-modal-create .ant-modal{
+        width: 800px !important;
+        position: fixed !important;
+        top: calc((100vh - 646px) / 2) !important;
+        left: calc((100vw - 800px) / 2) !important;
+    }
+
+    .open-modal-create .ant-modal-body {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}

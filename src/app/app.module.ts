@@ -22,6 +22,9 @@ import { HomeComponent } from './component/home/home.component';
 import { EmployeeManagerComponent } from './component/employee-manager/employee-manager.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { EmployeeFormComponent } from './component/employee-manager/employee-form/employee-form.component';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 registerLocaleData(en);
 
@@ -30,6 +33,7 @@ registerLocaleData(en);
     AppComponent,
     LoginComponent,
     EmployeeManagerComponent,
+    EmployeeFormComponent,
     HomeComponent
   ],
   imports: [
@@ -43,7 +47,9 @@ registerLocaleData(en);
     NzLayoutModule,
     NzMenuModule,
     NzModalModule,
+    NzSelectModule,
     NzFormModule,
+    NzButtonModule,
     NzPaginationModule,
     NzInputModule,
     NzTableModule,

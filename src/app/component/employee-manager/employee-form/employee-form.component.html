@@ -1,0 +1,142 @@
+<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+    <div nz-row nzGutter="12">
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="MSG.validate_required">
+                    <nz-form-label class="label-input" nzRequired>Tên nhân viên</nz-form-label>
+                    <nz-input-group>
+                        <input type="text" nz-input formControlName="userNameCtrl" placeholder="Username" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12"><nz-form-item>
+                <nz-form-control [nzErrorTip]="MSG.validate_required">
+                    <nz-form-label class="label-input" nzRequired>Giới tính</nz-form-label>
+                    <nz-input-group>
+                        <input type="text" nz-input formControlName="genderCtrl" placeholder="Password" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row nzGutter="12">
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="MSG.validate_required">
+                    <nz-form-label class="label-input" nzRequired>Mã nhân viên</nz-form-label>
+                    <nz-input-group>
+                        <input type="text" nz-input formControlName="userCodeCtrl" placeholder="Username" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12"><nz-form-item>
+                <nz-form-control [nzErrorTip]="MSG.validate_required">
+                    <nz-form-label class="label-input" nzRequired>Ngày/tháng/năm sinh</nz-form-label>
+                    <nz-input-group>
+                        <input type="text" nz-input formControlName="dateOfBirth" placeholder="Password" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row nzGutter="12">
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="MSG.validate_required">
+                    <nz-form-label class="label-input" nzRequired>Chức vụ</nz-form-label>
+                    <nz-input-group>
+                        <nz-select formControlName="positionCtrl" placeholder="Username">
+                            <nz-option nzValue="0" nzLabel="Jack"></nz-option>
+                            <nz-option nzValue="1" nzLabel="Lucy"></nz-option>
+                            <nz-option nzValue="2" nzLabel="Disabled"></nz-option>
+                          </nz-select>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12"><nz-form-item>
+                <nz-form-control [nzErrorTip]="MSG.validate_required">
+                    <nz-form-label class="label-input" nzRequired>Số điện thoại</nz-form-label>
+                    <nz-input-group>
+                        <input type="text" nz-input formControlName="phoneCtrl" placeholder="Password" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row nzGutter="12">
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="MSG.validate_required">
+                    <nz-form-label class="label-input" nzRequired>Trạng thái</nz-form-label>
+                    <nz-input-group>
+                        <input type="text" nz-input formControlName="statusCtrl" placeholder="Username" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12"><nz-form-item>
+                <nz-form-control [nzErrorTip]="MSG.validate_required">
+                    <nz-form-label class="label-input" nzRequired>Địa chỉ</nz-form-label>
+                    <nz-input-group>
+                        <input type="text" nz-input formControlName="addressCtrl" placeholder="Password" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row nzGutter="12">
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="MSG.validate_required">
+                    <nz-form-label class="label-input" nzRequired>Hợp đồng lao động</nz-form-label>
+                    <nz-input-group>
+                        <input type="text" nz-input formControlName="laborContractCtrl" placeholder="Username" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12"><nz-form-item>
+                <nz-form-control [nzErrorTip]="MSG.validate_required">
+                    <nz-form-label class="label-input" nzRequired>Email</nz-form-label>
+                    <nz-input-group>
+                        <input type="text" nz-input formControlName="emailCtrl" placeholder="Password" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row nzGutter="12">
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="MSG.validate_required">
+                    <nz-form-label class="label-input" nzRequired>Mức lương</nz-form-label>
+                    <nz-input-group>
+                        <input type="text" nz-input formControlName="salaryCtrl" placeholder="Username" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12"><nz-form-item>
+                <nz-form-control [nzErrorTip]="MSG.validate_required">
+                    <nz-form-label class="label-input" nzRequired>Mã lương</nz-form-label>
+                    <nz-input-group>
+                        <input type="text" nz-input formControlName="salaryCodeCtrl" placeholder="Password" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div class="action">
+        <button nz-button class="btn" nzType="default">Thoát</button>
+        <button nz-button class="btn" nzType="primary">Lưu</button>
+    </div>
+</form>

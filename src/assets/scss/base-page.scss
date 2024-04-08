@@ -37,6 +37,17 @@
         }
     }
 
+    .icon-edit{
+        color: blue;
+        cursor: pointer;
+    }
+
+    .icon-remove{
+        margin-left: 10px;
+        color: red;
+        cursor: pointer;
+    }
+
     .paging{
         display: flex;
         justify-content: end;

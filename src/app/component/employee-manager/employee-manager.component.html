@@ -1,7 +1,7 @@
 <div class="container-page">
     <div class="title">Quản lý hồ sơ nhân viên</div>
     <div class="action">
-        <div class="btn">Thêm mới</div>
+        <div class="btn" (click)="openModalCreate()">Thêm mới</div>
         <div class="search">
             <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
                 <nz-form-item class="input-search">
@@ -19,35 +19,35 @@
             <thead>
                 <tr>
                     <th nzWidth="80px" nzLeft>STT</th>
-                    <th nzLeft>Tên nhân viên</th>
-                    <th>Mã nhân viên</th>
-                    <th>Chức vụ</th>
-                    <th>Trạng thái</th>
-                    <th>Hợp đồng lao động</th>
-                    <th>Mức lương</th>
-                    <th>Mã lương</th>
-                    <th>Số điện thoại</th>
-                    <th>Email</th>
-                    <th>CCCD</th>
+                    <th nzLeft nzWidth="160px">Tên nhân viên</th>
+                    <th nzWidth="140px">Mã nhân viên</th>
+                    <th nzWidth="100px">Chức vụ</th>
+                    <th nzWidth="100px">Trạng thái</th>
+                    <th nzWidth="180px">Hợp đồng lao động</th>
+                    <th nzWidth="130px">Mức lương</th>
+                    <th nzWidth="100px">Mã lương</th>
+                    <th nzWidth="160px">Số điện thoại</th>
+                    <th nzWidth="100px">Email</th>
+                    <th nzWidth="100px">CCCD</th>
                     <th nzWidth="80px" nzRight>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let data of fixedTable.data; index as i">
                     <td nzWidth="80px" nzLeft>{{ i }}</td>
-                    <td nzLeft>{{ data.age }}</td>
-                    <td>{{ data.address }}</td>
-                    <td>{{ data.address }}</td>
-                    <td>{{ data.address }}</td>
-                    <td>{{ data.address }}</td>
-                    <td>{{ data.address }}</td>
-                    <td>{{ data.address }}</td>
-                    <td>{{ data.address }}</td>
-                    <td>{{ data.address }}</td>
-                    <td>{{ data.address }}</td>
+                    <td nzLeft nzWidth="160px">{{ data.age }}</td>
+                    <td nzWidth="140px">{{ data.address }}</td>
+                    <td nzWidth="100px">{{ data.address }}</td>
+                    <td nzWidth="100px">{{ data.address }}</td>
+                    <td nzWidth="180px">{{ data.address }}</td>
+                    <td nzWidth="130px">{{ data.address }}</td>
+                    <td nzWidth="100px">{{ data.address }}</td>
+                    <td nzWidth="160px">{{ data.address }}</td>
+                    <td nzWidth="100px">{{ data.address }}</td>
+                    <td nzWidth="100px">{{ data.address }}</td>
                     <td nzWidth="80px" nzRight>
-                        <span nz-icon nzType="edit" nzTheme="outline"></span>
-                        <span nz-icon nzType="delete" nzTheme="outline"></span>
+                        <span nz-icon class="icon-edit" nzType="edit" nzTheme="outline" (click)="openModalUpdate()"></span>
+                        <span nz-icon class="icon-remove" nzType="delete" nzTheme="outline" (click)="showConfirm()"></span>
                     </td>
                 </tr>
             </tbody>
