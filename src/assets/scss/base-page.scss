@@ -37,9 +37,15 @@
         }
     }
 
+    .icon-view{
+        color: black;
+        cursor: pointer;
+    }
+
     .icon-edit{
         color: blue;
         cursor: pointer;
+        margin-left: 10px;
     }
 
     .icon-remove{

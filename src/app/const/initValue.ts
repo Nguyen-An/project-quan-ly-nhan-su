@@ -30,6 +30,10 @@ export const POSITIONS = [
 
 export const STATUS = [
     {
+        key: 'all',
+        value: 'Tất cả'
+    },
+    {
         key: 'working',
         value: 'Đang làm việc'
     },
@@ -40,5 +44,20 @@ export const STATUS = [
     {
         key: 'resigned',
         value: 'Đã nghỉ việc'
+    }
+]
+
+export const SALARY = [
+    {
+        key: '0-6',
+        value: 'Dưới 6 triệu'
+    },
+    {
+        key: '6-9',
+        value: 'Trên 6 triệu dưới 9 triệu'
+    },
+    {
+        key: '9-m',
+        value: 'Trên 9 triệu'
     },
 ]

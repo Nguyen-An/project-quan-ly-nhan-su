@@ -1,0 +1,56 @@
+<div class="container-page">
+    <div class="title">Báo cáo danh sách nhân viên</div>
+    <div class="action">
+        <div class="btn" (click)="export()">Export</div>
+        <div class="search">
+            <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+                <nz-form-item class="input-search">
+                    <nz-form-control class="row">
+                        <nz-input-group style="min-width: 200px;">
+                            <nz-select formControlName="statusCtrl" [nzPlaceHolder]="'Lọc theo trạng thái'">
+                                <nz-option *ngFor="let item of STATUS" [nzValue]="item.key" [nzLabel]="item.value"></nz-option>
+                            </nz-select>
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+        </div>
+    </div>
+    <div class="table">
+        <nz-table #fixedTable [nzData]="listOfData" [nzScroll]="{ x: '1150px', y: '330px' }" [nzShowPagination]="false">
+            <thead>
+                <tr>
+                    <th nzWidth="80px" nzLeft>STT</th>
+                    <th nzWidth="140px" nzLeft>Tên nhân viên</th>
+                    <th nzWidth="160px">Mã nhân viên</th>
+                    <th nzWidth="200px">Email</th>
+                    <th nzWidth="100px">Chức vụ</th>
+                    <th nzWidth="130px">Số điện thoại</th>
+                    <th nzWidth="200px">Địa chỉ</th>
+                    <th nzWidth="160px">Trạng thái</th>
+                    <th nzWidth="130px">Ngày vào làm</th>
+                    <th nzWidth="130px">Ngày nghỉ việc</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of fixedTable.data; index as i">
+                    <td nzWidth="80px" nzLeft>{{ i + 1 + (currentPage-1)*10 }}</td>
+                    <td nzWidth="140px" nzLeft>{{ data.userName }}</td>
+                    <td nzWidth="160px">{{ data.userCode }}</td>
+                    <td nzWidth="200px">{{ data.email }}</td>
+                    <td nzWidth="160px">{{ data.positionView }}</td>
+                    <td nzWidth="130px">{{ data.phone }}</td>
+                    <td nzWidth="200px">{{ data.address }}</td>
+                    <td nzWidth="160px">{{ data.statusView }}</td>
+                    <td nzWidth="130px">{{ data.dateStart }}</td>
+                    <td nzWidth="130px">{{ data.dateEnd }}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+        <div class="paging">
+            <nz-pagination [(nzPageIndex)]="currentPage" [nzTotal]="total" [nzSize]="'small'"
+                [nzShowTotal]="totalTemplate" (nzPageIndexChange)="handlePageChange($event)"></nz-pagination>
+        </div>
+    </div>
+    <ng-template #totalTemplate let-total>Tổng số: {{ total }} bản ghi</ng-template>
+</div>

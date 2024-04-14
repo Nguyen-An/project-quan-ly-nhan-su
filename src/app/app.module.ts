@@ -26,6 +26,11 @@ import { EmployeeFormComponent } from './component/employee-manager/employee-for
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { SalaryManagerComponent } from './component/salary-manager/salary-manager.component';
+import { SalaryManagerFormComponent } from './component/salary-manager/salary-manager-form/salary-manager-form.component';
+import { ReportAccountComponent } from './component/report/report-account/report-account.component';
+import { ReportEmployeeComponent } from './component/report/report-employee/report-employee.component';
+import { ReportSalaryComponent } from './component/report/report-salary/report-salary.component';
 
 registerLocaleData(en);
 
@@ -35,7 +40,12 @@ registerLocaleData(en);
     LoginComponent,
     EmployeeManagerComponent,
     EmployeeFormComponent,
-    HomeComponent
+    HomeComponent,
+    SalaryManagerFormComponent,
+    SalaryManagerComponent,
+    ReportEmployeeComponent,
+    ReportAccountComponent,
+    ReportSalaryComponent
   ],
   imports: [
     BrowserModule,

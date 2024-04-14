@@ -1,7 +1,7 @@
 <div class="container-page">
-    <div class="title">Quản lý hồ sơ nhân viên</div>
+    <div class="title">Báo cáo danh sách tài khoản</div>
     <div class="action">
-        <div class="btn" (click)="openModal(MODE_FORM.create)">Thêm mới</div>
+        <div></div>
         <div class="search">
             <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
                 <nz-form-item class="input-search">
@@ -11,36 +11,23 @@
                 </nz-form-item>
             </form>
         </div>
-
-
     </div>
     <div class="table">
         <nz-table #fixedTable [nzData]="listOfData" [nzScroll]="{ x: '1150px', y: '330px' }" [nzShowPagination]="false">
             <thead>
                 <tr>
                     <th nzWidth="80px" nzLeft>STT</th>
-                    <th nzWidth="140px" nzLeft>Mã nhân viên</th>
-                    <th nzWidth="160px">Tên nhân viên</th>
+                    <th nzWidth="140px" nzLeft>Tên</th>
+                    <th nzWidth="160px">Email</th>
                     <th nzWidth="100px">Chức vụ</th>
-                    <th nzWidth="100px">Trạng thái</th>
-                    <th nzWidth="80px" nzRight>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let data of fixedTable.data; index as i">
                     <td nzWidth="80px" nzLeft>{{ i }}</td>
-                    <td nzLeft nzWidth="160px">{{ data.userCode }}</td>
-                    <td nzWidth="140px">{{ data.userName }}</td>
+                    <td nzLeft nzWidth="160px">{{ data.name }}</td>
+                    <td nzWidth="140px">{{ data.email }}</td>
                     <td nzWidth="100px">{{ data.positionView }}</td>
-                    <td nzWidth="160px">{{ data.statusView }}</td>
-                    <td nzWidth="80px" nzRight>
-                        <span nz-icon class="icon-view" nzType="eye" nzTheme="outline"
-                            (click)="openModal(MODE_FORM.detail, data)"></span>
-                        <span nz-icon class="icon-edit" nzType="edit" nzTheme="outline"
-                            (click)="openModal(MODE_FORM.update, data)"></span>
-                        <span nz-icon class="icon-remove" nzType="delete" nzTheme="outline"
-                            (click)="showConfirm()"></span>
-                    </td>
                 </tr>
             </tbody>
         </nz-table>

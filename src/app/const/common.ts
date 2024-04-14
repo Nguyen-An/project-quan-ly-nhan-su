@@ -1,6 +1,7 @@
 export const MODE_FORM = {
     create: 'CREATE',
     update: 'UPDATE',
+    detail: 'DETAIL',
 }
 
 export const MSG = {
