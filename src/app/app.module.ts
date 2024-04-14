@@ -31,6 +31,7 @@ import { SalaryManagerFormComponent } from './component/salary-manager/salary-ma
 import { ReportAccountComponent } from './component/report/report-account/report-account.component';
 import { ReportEmployeeComponent } from './component/report/report-employee/report-employee.component';
 import { ReportSalaryComponent } from './component/report/report-salary/report-salary.component';
+import { NgxApexchartsModule } from 'ngx-apexcharts';
 
 registerLocaleData(en);
 
@@ -65,7 +66,8 @@ registerLocaleData(en);
     NzInputModule,
     NzTableModule,
     NzIconModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NgxApexchartsModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
