@@ -19,16 +19,10 @@
             <thead>
                 <tr>
                     <th nzWidth="80px" nzLeft>STT</th>
-                    <th nzLeft nzWidth="160px">Tên nhân viên</th>
-                    <th nzWidth="140px">Mã nhân viên</th>
+                    <th nzWidth="140px" nzLeft>Mã nhân viên</th>
+                    <th nzWidth="160px">Tên nhân viên</th>
                     <th nzWidth="100px">Chức vụ</th>
                     <th nzWidth="100px">Trạng thái</th>
-                    <th nzWidth="180px">Hợp đồng lao động</th>
-                    <th nzWidth="130px">Mức lương</th>
-                    <th nzWidth="100px">Mã lương</th>
-                    <th nzWidth="160px">Số điện thoại</th>
-                    <th nzWidth="100px">Email</th>
-                    <th nzWidth="100px">CCCD</th>
                     <th nzWidth="80px" nzRight>Action</th>
                 </tr>
             </thead>
@@ -38,13 +32,7 @@
                     <td nzLeft nzWidth="160px">{{ data.age }}</td>
                     <td nzWidth="140px">{{ data.address }}</td>
                     <td nzWidth="100px">{{ data.address }}</td>
-                    <td nzWidth="100px">{{ data.address }}</td>
-                    <td nzWidth="180px">{{ data.address }}</td>
-                    <td nzWidth="130px">{{ data.address }}</td>
-                    <td nzWidth="100px">{{ data.address }}</td>
                     <td nzWidth="160px">{{ data.address }}</td>
-                    <td nzWidth="100px">{{ data.address }}</td>
-                    <td nzWidth="100px">{{ data.address }}</td>
                     <td nzWidth="80px" nzRight>
                         <span nz-icon class="icon-edit" nzType="edit" nzTheme="outline" (click)="openModalUpdate()"></span>
                         <span nz-icon class="icon-remove" nzType="delete" nzTheme="outline" (click)="showConfirm()"></span>

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { MSG } from 'src/app/const/common';
+import { GENDERS, POSITIONS, STATUS } from 'src/app/const/initValue';
 
 @Component({
   selector: 'app-employee-form',
@@ -9,7 +11,16 @@ import { MSG } from 'src/app/const/common';
 })
 export class EmployeeFormComponent {
 
+  constructor(
+    private fb: NonNullableFormBuilder,
+    @Inject(NZ_MODAL_DATA) public data: any,
+    private modal: NzModalRef<EmployeeFormComponent>,
+  ) {}
+
   MSG = MSG;
+  GENDERS = GENDERS;
+  POSITIONS = POSITIONS;
+  STATUS = STATUS;
 
   validateForm: FormGroup<{
     userNameCtrl: FormControl<string>;
@@ -25,20 +36,25 @@ export class EmployeeFormComponent {
     addressCtrl: FormControl<string>;
     emailCtrl: FormControl<string>;
     identityCardCtrl: FormControl<string>;
+    dateStart: FormControl<string>;
+    dateEnd: FormControl<string>;
+
   }> = this.fb.group({
     userNameCtrl: ['', [Validators.required]],
     userCodeCtrl: ['', [Validators.required]],
-    positionCtrl: ['0', [Validators.required]],
+    positionCtrl: ['', [Validators.required]],
     statusCtrl: ['', [Validators.required]],
     laborContractCtrl: ['', [Validators.required]],
     salaryCtrl: ['', [Validators.required]],
     salaryCodeCtrl: ['', [Validators.required]],
-    genderCtrl: ['0', [Validators.required]],
+    genderCtrl: ['', [Validators.required]],
     dateOfBirth: ['', [Validators.required]],
     phoneCtrl: ['', [Validators.required]],
     addressCtrl: ['', [Validators.required]],
     emailCtrl: ['', [Validators.required]],
-    identityCardCtrl: ['', [Validators.required]]
+    identityCardCtrl: ['', [Validators.required]],
+    dateStart: ['', [Validators.required]],
+    dateEnd: ['', []]
   });
 
   submitForm(): void {
@@ -54,5 +70,8 @@ export class EmployeeFormComponent {
     }
   }
 
-  constructor(private fb: NonNullableFormBuilder) {}
+  closeFrom() {
+    this.modal.close();
+  }
+
 }

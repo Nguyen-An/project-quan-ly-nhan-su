@@ -25,6 +25,7 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { EmployeeFormComponent } from './component/employee-manager/employee-form/employee-form.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 registerLocaleData(en);
 
@@ -53,7 +54,8 @@ registerLocaleData(en);
     NzPaginationModule,
     NzInputModule,
     NzTableModule,
-    NzIconModule
+    NzIconModule,
+    NzDatePickerModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

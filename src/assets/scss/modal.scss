@@ -1,8 +1,40 @@
-.action{
+.login-form {
+    max-height: calc(100vh - 164px);
+    overflow: auto;
+    padding-right: 6px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #9f9f9f;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #878787;
+}
+
+.action {
     display: flex;
     justify-content: end;
-    
-    .btn{
+
+    .btn {
         margin: 10px;
     }
+}
+
+.w-100 {
+    width: 100%;
 }
