@@ -27,10 +27,10 @@ export class HomeComponent {
     this.chartOptions = {
       series: [44, 55, 13],
       chart: {
-        width: 380,
+        width: 500,
         type: "pie"
       },
-      labels: ["Team A", "Team B", "Team C"],
+      labels: ["Tổng số nhân viên đang làm việc", "Tổng số nhân viên đang tạm nghỉ việc B", "Tổng số nhân viên đang đã nghỉ việc"],
       responsive: [
         {
           breakpoint: 480,

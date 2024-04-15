@@ -1,4 +1,41 @@
-<div id="chart">
-    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [labels]="chartOptions.labels"
-        [responsive]="chartOptions.responsive"></apx-chart>
+<div>
+    <div class="container-home">
+        <div class="container-left">
+            <div class="items">
+                <div class="item">
+                    <div class="title">Tổng số nhân viên đang làm việc</div>
+                    <div class="totlal">73</div>
+                    <div class="unit">Nhân viên</div>
+                </div>
+                <div class="item">
+                    <div class="title">Tổng số nhân viên đang tạm nghỉ việc</div>
+                    <div class="totlal">73</div>
+                    <div class="unit">Nhân viên</div>
+                </div>
+            </div>
+        </div>
+        <div class="container-left">
+            <div class="items">
+                <div class="item">
+                    <div class="title">Tổng số nhân viên đang làm việc</div>
+                    <div class="totlal">73</div>
+                    <div class="unit">Nhân viên</div>
+                </div>
+                <div class="item">
+                    <div class="title">Tổng số nhân viên đang tạm nghỉ việc</div>
+                    <div class="totlal">73</div>
+                    <div class="unit">Nhân viên</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-chart">
+        <div class="title">Nhân viên của tôi</div>
+
+        <div id="chart" class="chart">
+            <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [labels]="chartOptions.labels"
+                [responsive]="chartOptions.responsive"></apx-chart>
+        </div>
+    </div>
 </div>

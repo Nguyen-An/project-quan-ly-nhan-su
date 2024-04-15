@@ -1,6 +1,77 @@
 #chart {
-    max-width: 380px;
-    margin: 35px auto;
-    padding: 0;
+  max-width: 380px;
+  margin: 35px auto;
+  padding: 0;
+}
+
+.container-home{
+  display: flex;
+
+  .container-left{
+    flex: 1;
+
+    .items{
+      display: flex;
+      flex-direction: column;
+
+      .item{
+        background-color: #f0f2f5;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 12px;
+
+        .title{
+          font-size: 14px;
+          color: #2e2e2e;
+          margin-bottom: 10px;
+        }
+
+        .totlal{
+          color: #e03;
+          font-size: 28px;
+          font-weight: 600;
+          line-height: 32px;
+          word-break: break-all;
+          margin-bottom: 10px;
+        }
+
+        .unit{
+
+        }
+      }
+    }
   }
-  
+
+  .container-right{
+    flex: 1;
+  }
+}
+
+.container-chart{
+  margin-top: 16px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  .title{
+    padding: 8px 70px 8px 32px;
+    height: 46px;
+    display: inline-block;
+    color: #fff;
+    border-radius: 0 0 16px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 24px;
+    background: linear-gradient(94deg, #E03 0%, rgba(238, 0, 0, .85) 62.5%, rgba(238, 14, 0, .8) 100%);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .chart{
+    display: inline-block;
+  }
+}
