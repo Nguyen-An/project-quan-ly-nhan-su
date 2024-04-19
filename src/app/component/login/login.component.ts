@@ -37,7 +37,11 @@ export class LoginComponent {
   
   submitForm(): void {
     if (this.validateForm.valid) {
-      this.loginService.login();
+      const body = {
+        email: this.validateForm.value.userName,
+        password:  this.validateForm.value.password
+      };
+      this.loginService.login(body);
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {

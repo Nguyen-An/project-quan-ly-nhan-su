@@ -19,7 +19,7 @@
             <thead>
                 <tr>
                     <th nzWidth="80px" nzLeft>STT</th>
-                    <th nzWidth="140px" nzLeft>Mã nhân viên</th>
+                    <th nzWidth="100px" nzLeft>Mã nhân viên</th>
                     <th nzWidth="160px">Tên nhân viên</th>
                     <th nzWidth="100px">Chức vụ</th>
                     <th nzWidth="100px">Trạng thái</th>
@@ -28,9 +28,9 @@
             </thead>
             <tbody>
                 <tr *ngFor="let data of fixedTable.data; index as i">
-                    <td nzWidth="80px" nzLeft>{{ i }}</td>
-                    <td nzLeft nzWidth="160px">{{ data.userCode }}</td>
-                    <td nzWidth="140px">{{ data.userName }}</td>
+                    <td nzWidth="80px" nzLeft>{{ i + 1 + (currentPage-1)*10 }}</td>
+                    <td nzLeft nzWidth="100px">{{ data.userCode }}</td>
+                    <td nzWidth="160px">{{ data.userName }}</td>
                     <td nzWidth="100px">{{ data.positionView }}</td>
                     <td nzWidth="160px">{{ data.statusView }}</td>
                     <td nzWidth="80px" nzRight>

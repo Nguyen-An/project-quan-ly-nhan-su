@@ -5,6 +5,7 @@ import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { MODE_FORM } from 'src/app/const/common';
 import { Employee, employeeFakeData } from 'src/app/const/model';
 import { POSITIONS, STATUS } from 'src/app/const/initValue';
+import { EmployeeService } from 'src/app/services/employee.service';
 @Component({
   selector: 'app-employee-manager',
   templateUrl: './employee-manager.component.html',
@@ -22,6 +23,8 @@ export class EmployeeManagerComponent {
   constructor(
     private fb: NonNullableFormBuilder,
     private modalService: NzModalService,
+    private employeeService: EmployeeService,
+    
   ) { }
 
   submitForm(): void {
@@ -39,22 +42,37 @@ export class EmployeeManagerComponent {
 
   MODE_FORM = MODE_FORM;
   listOfData: Employee[] = [];
+  listOfDataAll: Employee[] = [];
   total = 0;
   currentPage = 1;
   size = 10;
 
   ngOnInit(): void {
-    this.listOfData = employeeFakeData.map(employee => {
-      let positionValue = POSITIONS.find(position => position.key == employee.position)?.value
-      employee.positionView = positionValue ? positionValue : '--';
+    this.getData()
+  }
 
-      let statusValue = STATUS.find(status => status.key == employee.status)?.value
-      employee.statusView = statusValue ? statusValue : '--';
-
-      return employee;
+  getData() {
+    this.employeeService.getAllData((res: any) => {
+      this.listOfDataAll = res.data.map((employee: any) => {
+        let positionValue = POSITIONS.find(position => position.key == employee.position)?.value
+        employee.positionView = positionValue ? positionValue : '--';
+  
+        let statusValue = STATUS.find(status => status.key == employee.status)?.value
+        employee.statusView = statusValue ? statusValue : '--';
+  
+        return employee;
+      });
+  
+      this.total = res.data.length
+      
+      this.listOfData = this.getPaginatedData(this.currentPage, this.size);
     });
+  }
 
-    this.total = employeeFakeData.length
+  getPaginatedData(currentPage: number, size: number): Employee[] {
+    const startIndex = (currentPage - 1) * size;
+    const endIndex = startIndex + size;
+    return this.listOfDataAll.slice(startIndex, endIndex);
   }
 
   openModal(mode: string, recordData?: Employee) {
@@ -94,6 +112,7 @@ export class EmployeeManagerComponent {
   }
 
   handlePageChange(pageTarget: any) {
-    console.log('pageTarget: ', pageTarget);
+    this.currentPage = pageTarget;
+    this.listOfData = this.getPaginatedData(pageTarget, this.size);
   }
 }
