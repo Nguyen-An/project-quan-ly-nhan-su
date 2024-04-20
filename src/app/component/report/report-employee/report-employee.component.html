@@ -7,7 +7,7 @@
                 <nz-form-item class="input-search">
                     <nz-form-control class="row">
                         <nz-input-group style="min-width: 200px;">
-                            <nz-select formControlName="statusCtrl" [nzPlaceHolder]="'Lọc theo trạng thái'">
+                            <nz-select formControlName="statusCtrl" [nzPlaceHolder]="'Lọc theo trạng thái'" (ngModelChange)="loadDataFile()">
                                 <nz-option *ngFor="let item of STATUS" [nzValue]="item.key" [nzLabel]="item.value"></nz-option>
                             </nz-select>
                         </nz-input-group>

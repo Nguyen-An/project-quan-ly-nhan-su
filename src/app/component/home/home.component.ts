@@ -6,6 +6,9 @@ import {
   ChartType
 } from "ngx-apexcharts";
 import { ChartComponent } from 'ngx-apexcharts';
+import { STATUS } from 'src/app/const/initValue';
+import { Employee } from 'src/app/const/model';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -23,9 +26,16 @@ export class HomeComponent {
   @ViewChild("chart") chart!: ChartComponent;
   chartOptions: ChartOptions;
 
-  constructor() {
+  totalEmployee: number = 0;
+  totalEmployeeWorking: number = 0;
+  totalEmployeeQuit: number = 0;
+  totalEmployeeQuitTemporarilyLaidOff: number = 0;
+    
+  constructor(
+    private employeeService: EmployeeService,
+  ) {
     this.chartOptions = {
-      series: [44, 55, 13],
+      series: [99, 99, 99],
       chart: {
         width: 500,
         type: "pie"
@@ -45,5 +55,20 @@ export class HomeComponent {
         }
       ]
     };
+
+    this.getData()
+  }
+  
+  listOfDataAll: Employee[] = [];
+
+  getData() {
+    this.employeeService.getAllData((res: any) => {
+      this.listOfDataAll = res.data;
+      this.totalEmployee = this.listOfDataAll.length;
+      this.totalEmployeeWorking = this.listOfDataAll.filter(item => item.status === 'working').length;
+      this.totalEmployeeQuitTemporarilyLaidOff = this.listOfDataAll.filter(item => item.status === 'onLeave').length;
+      this.totalEmployeeQuit = this.listOfDataAll.filter(item => item.status === 'resigned').length;
+      this.chartOptions.series = [this.totalEmployeeWorking, this.totalEmployeeQuitTemporarilyLaidOff, this.totalEmployeeQuit]
+    });
   }
 }

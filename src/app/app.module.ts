@@ -33,6 +33,7 @@ import { ReportEmployeeComponent } from './component/report/report-employee/repo
 import { ReportSalaryComponent } from './component/report/report-salary/report-salary.component';
 import { NgxApexchartsModule } from 'ngx-apexcharts';
 import { NzMessageModule } from 'ng-zorro-antd/message'; 
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown'; 
 
 registerLocaleData(en);
 
@@ -70,7 +71,8 @@ registerLocaleData(en);
     NzDatePickerModule,
     NgxApexchartsModule,
     HttpClientModule,
-    NzMessageModule
+    NzMessageModule,
+    NzDropDownModule 
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

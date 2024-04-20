@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  private isLogin = new BehaviorSubject<boolean>(false);
+  private isLogin = new BehaviorSubject<boolean>(true);
   isLogin$ = this.isLogin.asObservable();
 
   constructor(
@@ -28,5 +28,9 @@ export class LoginService {
         this.message.warning('Tài khoản, mật khẩu không chính xác');
       }
     );
+  }
+
+  logut() {
+    this.isLogin.next(false);
   }
 }

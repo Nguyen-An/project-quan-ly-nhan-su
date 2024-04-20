@@ -6,7 +6,7 @@
             <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
                 <nz-form-item class="input-search">
                     <nz-form-control>
-                        <input id="note" type="text" nz-input formControlName="search" placeholder="Tìm kiếm" />
+                        <input id="note" type="text" nz-input formControlName="searchCtrl" placeholder="Tìm kiếm" />
                     </nz-form-control>
                 </nz-form-item>
             </form>
@@ -39,7 +39,7 @@
                         <span nz-icon class="icon-edit" nzType="edit" nzTheme="outline"
                             (click)="openModal(MODE_FORM.update, data)"></span>
                         <span nz-icon class="icon-remove" nzType="delete" nzTheme="outline"
-                            (click)="showConfirm()"></span>
+                            (click)="showConfirm(data)"></span>
                     </td>
                 </tr>
             </tbody>

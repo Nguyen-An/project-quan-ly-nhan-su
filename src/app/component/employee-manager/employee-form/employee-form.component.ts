@@ -76,10 +76,16 @@ export class EmployeeFormComponent {
         dateEnd: this.validateForm.value.dateEndCtrl ? this.formatDate(new Date(this.validateForm.value.dateEndCtrl)) : "",
         dateStart: this.formatDate(new Date(this.validateForm.value.dateStartCtrl ? this.validateForm.value.dateStartCtrl : ""))
       }
-      this.employeeService.postData(data, (res: any) => {
-        this.modal.close(true);
-      })
 
+      if (this.data.mode == MODE_FORM.create) {
+        this.employeeService.postData(data, (res: any) => {
+          this.modal.close(true);
+        })
+      } else if (this.data.mode  == MODE_FORM.update) {
+        this.employeeService.updateData(data, this.data?.recordData?.employeeId, (res: any) => {
+          this.modal.close(true);
+        })
+      }
 
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
@@ -101,6 +107,8 @@ export class EmployeeFormComponent {
 
   ngOnInit() {
     this.updateDate();
+    console.log("data: ", this.data);
+
   }
 
   closeFrom() {
@@ -109,20 +117,20 @@ export class EmployeeFormComponent {
 
   updateDate() {
     if (this.data?.mode == MODE_FORM.detail || this.data?.mode == MODE_FORM.update) {
-      this.validateForm.controls.userCodeCtrl.setValue(this.data?.recordData?.userCode)
-      this.validateForm.controls.userNameCtrl.setValue(this.data?.recordData?.userName)
-      this.validateForm.controls.positionCtrl.setValue(this.data?.recordData?.position)
-      this.validateForm.controls.statusCtrl.setValue(this.data?.recordData?.status)
-      this.validateForm.controls.laborContractCtrl.setValue(this.data?.recordData?.laborContract)
-      this.validateForm.controls.salaryCtrl.setValue(this.data?.recordData?.salary)
-      this.validateForm.controls.genderCtrl.setValue(this.data?.recordData?.gender)
-      this.validateForm.controls.dateOfBirthCtrl.setValue(this.data?.recordData?.dateOfBirth)
-      this.validateForm.controls.phoneCtrl.setValue(this.data?.recordData?.phone)
-      this.validateForm.controls.addressCtrl.setValue(this.data?.recordData?.address)
-      this.validateForm.controls.emailCtrl.setValue(this.data?.recordData?.email)
-      this.validateForm.controls.identityCardCtrl.setValue(this.data?.recordData?.identityCard)
-      this.validateForm.controls.dateStartCtrl.setValue(this.data?.recordData?.dateStart)
-      this.validateForm.controls.dateEndCtrl.setValue(this.data?.recordData?.dateEnd)
+      this.validateForm.controls.userCodeCtrl.setValue(this.data?.recordData?.userCode ? this.data?.recordData?.userCode : '')
+      this.validateForm.controls.userNameCtrl.setValue(this.data?.recordData?.userName ? this.data?.recordData?.userName : '')
+      this.validateForm.controls.positionCtrl.setValue(this.data?.recordData?.position ? this.data?.recordData?.position : '')
+      this.validateForm.controls.statusCtrl.setValue(this.data?.recordData?.status ? this.data?.recordData?.status : '')
+      this.validateForm.controls.laborContractCtrl.setValue(this.data?.recordData?.laborContract ? this.data?.recordData?.laborContract : '');
+      this.validateForm.controls.salaryCtrl.setValue(this.data?.recordData?.salary ? this.data?.recordData?.salary : '');
+      this.validateForm.controls.genderCtrl.setValue(this.data?.recordData?.gender ? this.data?.recordData?.gender : '');
+      this.validateForm.controls.dateOfBirthCtrl.setValue(this.data?.recordData?.dateOfBirth ? this.data?.recordData?.dateOfBirth : '');
+      this.validateForm.controls.phoneCtrl.setValue(this.data?.recordData?.phone ? this.data?.recordData?.phone : '');
+      this.validateForm.controls.addressCtrl.setValue(this.data?.recordData?.address ? this.data?.recordData?.address : '')
+      this.validateForm.controls.emailCtrl.setValue(this.data?.recordData?.email ? this.data?.recordData?.email : '')
+      this.validateForm.controls.identityCardCtrl.setValue(this.data?.recordData?.identityCard ? this.data?.recordData?.identityCard : '')
+      this.validateForm.controls.dateStartCtrl.setValue(this.data?.recordData?.dateStart ? this.data?.recordData?.dateStart : '')
+      this.validateForm.controls.dateEndCtrl.setValue(this.data?.recordData?.dateEnd  ? this.data?.recordData?.dateEnd : '')
     }
   }
 

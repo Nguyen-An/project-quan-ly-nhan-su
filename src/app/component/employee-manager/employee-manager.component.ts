@@ -100,8 +100,6 @@ export class EmployeeManagerComponent {
     });
 
     modalRef.afterClose.subscribe((result: any) => {
-      console.log(result);
-    
       if (result) {
         this.getData();
       }
@@ -109,14 +107,13 @@ export class EmployeeManagerComponent {
     
   }
 
-  showConfirm(): void {
+  showConfirm(data: any): void {
     this.confirmModal = this.modalService.confirm({
       nzTitle: 'Bạn có chắc chắn muốn xóa bản ghi này không?',
-      // nzContent: 'When clicked the OK button, this dialog will be closed after 1 second',
       nzOnOk: () =>
-        new Promise((resolve, reject) => {
-          setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
-        }).catch(() => console.log('Oops errors!'))
+        this.employeeService.deleteData(data?.employeeId, (data: any) => {
+          this.getData();
+        })
     });
   }
 

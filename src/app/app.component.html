@@ -4,12 +4,8 @@
   </div>
   <div class="done-login" *ngIf="isLogin">
     <nz-layout class="app-layout">
-      <nz-sider class="menu-sidebar"
-                nzCollapsible
-                nzWidth="256px"
-                nzBreakpoint="md"
-                [(nzCollapsed)]="isCollapsed"
-                [nzTrigger]="null">
+      <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+        [nzTrigger]="null">
         <div class="sidebar-logo">
           <a routerLink="/home">
             <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
@@ -18,13 +14,15 @@
         </div>
         <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
           <li routerLink="/home" nz-menu-item nzMatchRouter>
-            <a ><span nz-icon nzType="home" nzTheme="outline"></span> &nbsp; Trang chủ</a>
+            <a><span nz-icon nzType="home" nzTheme="outline"></span> <span *ngIf="!isCollapsed">Trang chủ</span></a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/employee-manager"><span nz-icon nzType="user-add" nzTheme="outline"></span> &nbsp; Quản lý hồ sơ nhân viên</a>
+            <a routerLink="/employee-manager"><span nz-icon nzType="user-add" nzTheme="outline"></span> <span
+                *ngIf="!isCollapsed">Quản lý hồ sơ nhân viên</span></a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/salary-manager"><span nz-icon nzType="pound" nzTheme="outline"></span> &nbsp; Quản lý lương</a>
+            <a routerLink="/salary-manager"><span nz-icon nzType="pound" nzTheme="outline"></span> <span
+                *ngIf="!isCollapsed">Quản lý lương</span></a>
           </li>
           <li nz-submenu nzTitle="Thống kê, báo cáo" nzIcon="export">
             <ul>
@@ -45,11 +43,15 @@
         <nz-header>
           <div class="app-header">
             <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-                <span class="trigger"
-                   nz-icon
-                   [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-                ></span>
+              <span class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
             </span>
+            <div class="menu-header">
+              <img src="../assets/image/avatar-null.png">
+              <button nz-button nz-dropdown [nzDropdownMenu]="menu" style="padding: 0 10px;">Nguyen Van An</button>
+              <nz-dropdown-menu #menu="nzDropdownMenu">
+                  <div class="log-out" (click)="logout()">Đăng xuất</div>
+              </nz-dropdown-menu>
+            </div>
           </div>
         </nz-header>
         <nz-content>
@@ -59,7 +61,6 @@
         </nz-content>
       </nz-layout>
     </nz-layout>
-    
+
   </div>
 </div>
-

@@ -16,4 +16,8 @@ export class AppComponent {
       this.isLogin = data;
     });
   }
+
+  logout() {
+    this.loginService.logut();
+  }
 }

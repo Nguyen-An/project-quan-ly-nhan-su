@@ -42,4 +42,34 @@ export class EmployeeService {
     );
   }
 
+  updateData(data: any, id: any,callback?: any) {
+    const url = 'http://localhost:3333/api/job-service/employee/' + id;
+  
+    this.http.put(url, data).subscribe(
+      (response) => {
+        // Xử lý kết quả ở đây
+        this.message.success('Cập nhật nhân viên thành công');
+        callback(response)
+      },
+      (error) => {
+        this.message.warning('Đã có lỗi xảy ra');
+      }
+    );
+  }
+
+  deleteData(id: any,callback?: any) {
+    const url = 'http://localhost:3333/api/job-service/employee/' + id;
+  
+    this.http.delete(url).subscribe(
+      (response) => {
+        // Xử lý kết quả ở đây
+        this.message.success('Xóa nhân viên thành công');
+        callback(response)
+      },
+      (error) => {
+        this.message.warning('Đã có lỗi xảy ra');
+      }
+    );
+  }
+
 }
