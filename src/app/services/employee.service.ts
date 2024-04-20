@@ -27,5 +27,19 @@ export class EmployeeService {
 
   }
 
+  postData(data: any, callback?: any) {
+    const url = 'http://localhost:3333/api/job-service/employee';
+  
+    this.http.post(url, data).subscribe(
+      (response) => {
+        // Xử lý kết quả ở đây
+        this.message.success('Thêm mới nhân viên thành công');
+        callback(response)
+      },
+      (error) => {
+        this.message.warning('Đã có lỗi xảy ra');
+      }
+    );
+  }
 
 }

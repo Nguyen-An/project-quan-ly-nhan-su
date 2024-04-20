@@ -90,7 +90,7 @@ export class EmployeeManagerComponent {
       data.title = 'Chi tiết nhân viên';
     }
 
-    this.modalService.create({
+    const modalRef = this.modalService.create({
       nzTitle:  data.title,
       nzContent: EmployeeFormComponent,
       nzData: data,
@@ -98,6 +98,15 @@ export class EmployeeManagerComponent {
       nzWrapClassName: 'open-modal-create',
       nzFooter: null,
     });
+
+    modalRef.afterClose.subscribe((result: any) => {
+      console.log(result);
+    
+      if (result) {
+        this.getData();
+      }
+    });
+    
   }
 
   showConfirm(): void {

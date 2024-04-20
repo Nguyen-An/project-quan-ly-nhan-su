@@ -3,6 +3,7 @@ import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@ang
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { MODE_FORM, MSG } from 'src/app/const/common';
 import { GENDERS, POSITIONS, STATUS } from 'src/app/const/initValue';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-employee-form',
@@ -15,6 +16,7 @@ export class EmployeeFormComponent {
     private fb: NonNullableFormBuilder,
     @Inject(NZ_MODAL_DATA) public data: any,
     private modal: NzModalRef<EmployeeFormComponent>,
+    private employeeService: EmployeeService
   ) { }
 
   MSG = MSG;
@@ -38,27 +40,47 @@ export class EmployeeFormComponent {
     identityCardCtrl: FormControl<string>;
     dateStartCtrl: FormControl<string>;
     dateEndCtrl: FormControl<string>;
-    
+
   }> = this.fb.group({
-    userCodeCtrl: [{value: '', disabled: this.isCheckDisabled()}, [Validators.required]],
-    userNameCtrl: [{value: '', disabled: this.isCheckDisabled()}, [Validators.required], ],
-    positionCtrl: [{value: '', disabled: this.isCheckDisabled()}, [Validators.required]],
-    statusCtrl: [{value: '', disabled: this.isCheckDisabled()}, [Validators.required]],
-    laborContractCtrl: [{value: '', disabled: this.isCheckDisabled()}, [Validators.required]],
-    salaryCtrl: [{value: '', disabled: this.isCheckDisabled()}, [Validators.required]],
-    genderCtrl: [{value: '', disabled: this.isCheckDisabled()}, [Validators.required]],
-    dateOfBirthCtrl: [{value: '', disabled: this.isCheckDisabled()}, [Validators.required]],
-    phoneCtrl: [{value: '', disabled: this.isCheckDisabled()}, [Validators.required]],
-    addressCtrl: [{value: '', disabled: this.isCheckDisabled()}, [Validators.required]],
-    emailCtrl: [{value: '', disabled: this.isCheckDisabled()}, [Validators.required]],
-    identityCardCtrl: [{value: '', disabled: this.isCheckDisabled()}, [Validators.required]],
-    dateStartCtrl: [{value: '', disabled: this.isCheckDisabled()}, [Validators.required]],
-    dateEndCtrl: [{value: '', disabled: this.isCheckDisabled()}, []]
+    userCodeCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],
+    userNameCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required],],
+    positionCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],
+    statusCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],
+    laborContractCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],
+    salaryCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],
+    genderCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],
+    dateOfBirthCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],
+    phoneCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],
+    addressCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],
+    emailCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],
+    identityCardCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],
+    dateStartCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],
+    dateEndCtrl: [{ value: '', disabled: this.isCheckDisabled() }, []]
   });
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
+      let data = {
+        userName: this.validateForm.value.userNameCtrl,
+        userCode: this.validateForm.value.userCodeCtrl,
+        gender: this.validateForm.value.genderCtrl,
+        dateOfBirth: this.formatDate(new Date(this.validateForm.value.dateOfBirthCtrl ? this.validateForm.value.dateOfBirthCtrl : "")),
+        phone: this.validateForm.value.phoneCtrl,
+        address: this.validateForm.value.addressCtrl,
+        email: this.validateForm.value.emailCtrl,
+        identityCard: this.validateForm.value.identityCardCtrl,
+        status: this.validateForm.value.statusCtrl,
+        position: this.validateForm.value.positionCtrl,
+        laborContract: this.validateForm.value.laborContractCtrl,
+        salary: this.validateForm.value.salaryCtrl,
+        dateEnd: this.validateForm.value.dateEndCtrl ? this.formatDate(new Date(this.validateForm.value.dateEndCtrl)) : "",
+        dateStart: this.formatDate(new Date(this.validateForm.value.dateStartCtrl ? this.validateForm.value.dateStartCtrl : ""))
+      }
+      this.employeeService.postData(data, (res: any) => {
+        this.modal.close(true);
+      })
+
+
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
@@ -67,6 +89,14 @@ export class EmployeeFormComponent {
         }
       });
     }
+  }
+
+  formatDate(date: Date): string {
+    const day = date.getDate().toString().padStart(2, '0'); // Lấy ngày và thêm số 0 phía trước nếu cần
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Lấy tháng (phải cộng thêm 1 vì index của tháng bắt đầu từ 0) và thêm số 0 phía trước nếu cần
+    const year = date.getFullYear(); // Lấy năm
+
+    return `${day}/${month}/${year}`;
   }
 
   ngOnInit() {
@@ -96,7 +126,7 @@ export class EmployeeFormComponent {
     }
   }
 
-  isCheckDisabled():boolean {
+  isCheckDisabled(): boolean {
     if (this.data?.mode == MODE_FORM.detail) return true
     return false;
   }
