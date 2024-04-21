@@ -36,18 +36,18 @@ export class SalaryManagerFormComponent {
     statusCtrl: FormControl<string>;              // Trạng thái
     dateOfReceiptCtrl: FormControl<string>;       // Ngày nhận
   }> = this.fb.group({
-    userNameCtrl: ['', [Validators.required]],
-    userCodeCtrl: ['', [Validators.required]],
-    positionCtrl: ['', [Validators.required]],
-    salaryCtrl: ['', [Validators.required]],
-    workDayCtrl: ['', [Validators.required]],
-    allowanceCtrl: ['', [Validators.required]],
-    bonusCtrl: ['', [Validators.required]],
-    punishCtrl: ['', [Validators.required]],
-    advanceCtrl: ['', [Validators.required]],
-    actuallyReceivedCtrl: ['', [Validators.required]],
-    statusCtrl: ['', [Validators.required]],
-    dateOfReceiptCtrl: ['', [Validators.required]],
+    userNameCtrl: [{ value: '', disabled: true }, [Validators.required]],
+    userCodeCtrl: [{ value: '', disabled: true }, [Validators.required]],
+    positionCtrl: [{ value: '', disabled: true }, [Validators.required]],
+    salaryCtrl: [{ value: '', disabled: true }, [Validators.required]],
+    workDayCtrl: [{ value: '', disabled: true }, [Validators.required]],
+    allowanceCtrl: [{ value: '', disabled: true }, [Validators.required]],
+    bonusCtrl: [{ value: '', disabled: true }, [Validators.required]],
+    punishCtrl: [{ value: '', disabled: true }, [Validators.required]],
+    advanceCtrl: [{ value: '', disabled: true }, [Validators.required]],
+    actuallyReceivedCtrl: [{ value: '', disabled: true }, [Validators.required]],
+    statusCtrl: [{ value: '', disabled: true }, [Validators.required]],
+    dateOfReceiptCtrl: [{ value: '', disabled: true }, [Validators.required]],
   });
 
   submitForm(): void {

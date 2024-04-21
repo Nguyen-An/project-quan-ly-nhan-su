@@ -55,7 +55,7 @@
                     <nz-form-control [nzErrorTip]="MSG.validate_required">
                         <nz-form-label class="label-input" nzRequired>Số điện thoại</nz-form-label>
                         <nz-input-group>
-                            <input type="text" nz-input formControlName="phoneCtrl" placeholder="Nhập" />
+                            <input type="text" nz-input formControlName="phoneCtrl" placeholder="Nhập" appOnlyNumber/>
                         </nz-input-group>
                     </nz-form-control>
                 </nz-form-item>
@@ -88,7 +88,7 @@
                     <nz-form-control [nzErrorTip]="MSG.validate_required">
                         <nz-form-label class="label-input" nzRequired>CCCD</nz-form-label>
                         <nz-input-group>
-                            <input type="text" nz-input formControlName="identityCardCtrl" placeholder="Nhập" />
+                            <input type="text" nz-input formControlName="identityCardCtrl" placeholder="Nhập" appOnlyNumber/>
                         </nz-input-group>
                     </nz-form-control>
                 </nz-form-item>
@@ -102,7 +102,7 @@
                         <nz-form-label class="label-input" nzRequired>Trạng thái</nz-form-label>
                         <nz-input-group>
                             <nz-select formControlName="statusCtrl" [nzPlaceHolder]="'Chọn'">
-                                <nz-option *ngFor="let item of STATUS" [nzValue]="item.key"
+                                <nz-option *ngFor="let item of STATUS_FORM" [nzValue]="item.key"
                                     [nzLabel]="item.value"></nz-option>
                             </nz-select>
                         </nz-input-group>
@@ -140,7 +140,7 @@
                     <nz-form-control [nzErrorTip]="MSG.validate_required">
                         <nz-form-label class="label-input" nzRequired>Mức lương</nz-form-label>
                         <nz-input-group>
-                            <input type="text" nz-input formControlName="salaryCtrl" placeholder="Nhập" />
+                            <input type="text" nz-input formControlName="salaryCtrl" placeholder="Nhập" appOnlyNumber/>
                         </nz-input-group>
                     </nz-form-control>
                 </nz-form-item>
@@ -153,7 +153,7 @@
                     <nz-form-control [nzErrorTip]="MSG.validate_required">
                         <nz-form-label class="label-input" nzRequired>Ngày vào làm</nz-form-label>
                         <nz-input-group>
-                            <nz-date-picker class="w-100" formControlName="dateStartCtrl"
+                            <nz-date-picker [nzDisabledDate]="disabledStartDate" class="w-100" formControlName="dateStartCtrl"
                                 [nzPlaceHolder]="'Chọn'"></nz-date-picker>
                         </nz-input-group>
                     </nz-form-control>
@@ -163,7 +163,7 @@
                     <nz-form-control>
                         <nz-form-label class="label-input">Ngày nghỉ</nz-form-label>
                         <nz-input-group>
-                            <nz-date-picker class="w-100" formControlName="dateEndCtrl"
+                            <nz-date-picker [nzDisabledDate]="disabledEndDate" class="w-100" formControlName="dateEndCtrl"
                                 [nzPlaceHolder]="'Chọn'"></nz-date-picker>
                         </nz-input-group>
                     </nz-form-control>

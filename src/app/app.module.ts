@@ -34,6 +34,8 @@ import { ReportSalaryComponent } from './component/report/report-salary/report-s
 import { NgxApexchartsModule } from 'ngx-apexcharts';
 import { NzMessageModule } from 'ng-zorro-antd/message'; 
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown'; 
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { OnlyNumberDirective } from './directive/only-number.directive';
 
 registerLocaleData(en);
 
@@ -48,7 +50,8 @@ registerLocaleData(en);
     SalaryManagerComponent,
     ReportEmployeeComponent,
     ReportAccountComponent,
-    ReportSalaryComponent
+    ReportSalaryComponent,
+    OnlyNumberDirective 
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ registerLocaleData(en);
     NgxApexchartsModule,
     HttpClientModule,
     NzMessageModule,
-    NzDropDownModule 
+    NzDropDownModule,
+    NzInputNumberModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

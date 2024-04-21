@@ -47,6 +47,21 @@ export const STATUS = [
     }
 ]
 
+export const STATUS_FORM = [
+    {
+        key: 'working',
+        value: 'Đang làm việc'
+    },
+    {
+        key: 'onLeave',
+        value: 'Tạm nghỉ việc'
+    },
+    {
+        key: 'resigned',
+        value: 'Đã nghỉ việc'
+    }
+]
+
 export const SALARY = [
     {
         key: '0-6',

@@ -34,11 +34,11 @@
                     <td nzWidth="100px">{{ data.positionView }}</td>
                     <td nzWidth="160px">{{ data.statusView }}</td>
                     <td nzWidth="80px" nzRight>
-                        <span nz-icon class="icon-view" nzType="eye" nzTheme="outline"
+                        <span nz-icon class="icon-view" nzType="eye" nzTheme="outline" title="Xem chi tiết"
                             (click)="openModal(MODE_FORM.detail, data)"></span>
-                        <span nz-icon class="icon-edit" nzType="edit" nzTheme="outline"
+                        <span nz-icon class="icon-edit" nzType="edit" nzTheme="outline" title="Cập nhật"
                             (click)="openModal(MODE_FORM.update, data)"></span>
-                        <span nz-icon class="icon-remove" nzType="delete" nzTheme="outline"
+                        <span nz-icon class="icon-remove" nzType="delete" nzTheme="outline" title="Xóa"
                             (click)="showConfirm(data)"></span>
                     </td>
                 </tr>

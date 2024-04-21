@@ -2,8 +2,9 @@ import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { NZ_MODAL_DATA, NzModalRef } from 'ng-zorro-antd/modal';
 import { MODE_FORM, MSG } from 'src/app/const/common';
-import { GENDERS, POSITIONS, STATUS } from 'src/app/const/initValue';
+import { GENDERS, POSITIONS, STATUS, STATUS_FORM } from 'src/app/const/initValue';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { differenceInCalendarDays } from 'date-fns';
 
 @Component({
   selector: 'app-employee-form',
@@ -22,7 +23,7 @@ export class EmployeeFormComponent {
   MSG = MSG;
   GENDERS = GENDERS;
   POSITIONS = POSITIONS;
-  STATUS = STATUS;
+  STATUS_FORM = STATUS_FORM;
   MODE_FORM = MODE_FORM;
 
   validateForm: FormGroup<{
@@ -59,6 +60,8 @@ export class EmployeeFormComponent {
   });
 
   submitForm(): void {
+    console.log(this.validateForm.value.dateStartCtrl);
+
     if (this.validateForm.valid) {
       let data = {
         userName: this.validateForm.value.userNameCtrl,
@@ -81,7 +84,7 @@ export class EmployeeFormComponent {
         this.employeeService.postData(data, (res: any) => {
           this.modal.close(true);
         })
-      } else if (this.data.mode  == MODE_FORM.update) {
+      } else if (this.data.mode == MODE_FORM.update) {
         this.employeeService.updateData(data, this.data?.recordData?.employeeId, (res: any) => {
           this.modal.close(true);
         })
@@ -107,8 +110,6 @@ export class EmployeeFormComponent {
 
   ngOnInit() {
     this.updateDate();
-    console.log("data: ", this.data);
-
   }
 
   closeFrom() {
@@ -129,8 +130,8 @@ export class EmployeeFormComponent {
       this.validateForm.controls.addressCtrl.setValue(this.data?.recordData?.address ? this.data?.recordData?.address : '')
       this.validateForm.controls.emailCtrl.setValue(this.data?.recordData?.email ? this.data?.recordData?.email : '')
       this.validateForm.controls.identityCardCtrl.setValue(this.data?.recordData?.identityCard ? this.data?.recordData?.identityCard : '')
-      this.validateForm.controls.dateStartCtrl.setValue(this.data?.recordData?.dateStart ? this.data?.recordData?.dateStart : '')
-      this.validateForm.controls.dateEndCtrl.setValue(this.data?.recordData?.dateEnd  ? this.data?.recordData?.dateEnd : '')
+      this.validateForm.controls.dateStartCtrl.setValue(this.data?.recordData?.dateStart ? this.formatDateToMMDDYYYY(this.data?.recordData?.dateStart) : '')
+      this.validateForm.controls.dateEndCtrl.setValue(this.data?.recordData?.dateEnd ? this.formatDateToMMDDYYYY(this.data?.recordData?.dateEnd) : '')
     }
   }
 
@@ -138,5 +139,35 @@ export class EmployeeFormComponent {
     if (this.data?.mode == MODE_FORM.detail) return true
     return false;
   }
+
+  disabledStartDate = (startValue: Date): boolean => {
+    if (!startValue || !this.validateForm.value?.dateEndCtrl) {
+      return false;
+    }
+
+    return differenceInCalendarDays(startValue, new Date(this.validateForm.value.dateEndCtrl)) > 0;
+  }
+
+  disabledEndDate = (endValue: Date): boolean => {
+    if (!endValue || !this.validateForm.value?.dateStartCtrl) {
+      return false;
+    }
+
+    return differenceInCalendarDays(new Date(this.validateForm.value.dateStartCtrl), endValue) > 0;
+  }
+
+  formatDateToMMDDYYYY(dateString: string): string {
+    const parts = dateString.split('/'); // Tách chuỗi thành mảng các phần tử bằng dấu '/'
+
+    // Kiểm tra xem mảng có đúng 3 phần tử không
+    if (parts.length !== 3) {
+        return dateString; // Trả về chuỗi ban đầu nếu không đúng định dạng
+    }
+
+    const [day, month, year] = parts;
+
+    // Kết hợp lại các phần tử theo định dạng mới và trả về
+    return `${month}-${day}-${year}`;
+}
 
 }
