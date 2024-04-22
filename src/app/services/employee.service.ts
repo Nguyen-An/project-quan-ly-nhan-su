@@ -13,8 +13,9 @@ export class EmployeeService {
   ) { }
 
 
-  getAllData(callback?: any) {
-    const url = 'http://localhost:3333/api/job-service/employee';
+  getAllData(callback?: any, searchCtrl?: any,) {
+    let url = 'http://localhost:3333/api/job-service/employee';
+    if (searchCtrl) url = url + '?keywords=' + searchCtrl;
 
     this.http.get(url).subscribe(
       (response) => {

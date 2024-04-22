@@ -28,16 +28,8 @@ export class EmployeeManagerComponent {
   ) { }
 
   submitForm(): void {
-    if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
-    } else {
-      Object.values(this.validateForm.controls).forEach(control => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
-    }
+    this.keywords = this.validateForm.value.searchCtrl;
+    this.getData();
   }
 
   MODE_FORM = MODE_FORM;
@@ -46,6 +38,7 @@ export class EmployeeManagerComponent {
   total = 0;
   currentPage = 1;
   size = 10;
+  keywords: any = '';
 
   ngOnInit(): void {
     this.getData()
@@ -66,7 +59,7 @@ export class EmployeeManagerComponent {
       this.total = res.data.length
       
       this.listOfData = this.getPaginatedData(this.currentPage, this.size);
-    });
+    }, this.keywords);
   }
 
   getPaginatedData(currentPage: number, size: number): Employee[] {

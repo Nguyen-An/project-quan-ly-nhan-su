@@ -10,10 +10,15 @@ export class AppComponent {
   isCollapsed = false;
 
   isLogin: boolean = false;
+  userName: string = ''
 
   constructor(private loginService: LoginService ) {
     this.loginService.isLogin$.subscribe(data => {
       this.isLogin = data;
+    });
+
+    this.loginService.userName$.subscribe((data: any) => {
+      this.userName = data;
     });
   }
 

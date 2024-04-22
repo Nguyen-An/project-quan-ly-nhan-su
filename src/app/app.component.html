@@ -47,7 +47,7 @@
             </span>
             <div class="menu-header">
               <img src="../assets/image/avatar-null.png">
-              <button nz-button nz-dropdown [nzDropdownMenu]="menu" style="padding: 0 10px;">Nguyen Van An</button>
+              <button nz-button nz-dropdown [nzDropdownMenu]="menu" style="padding: 0 10px;">{{userName}}</button>
               <nz-dropdown-menu #menu="nzDropdownMenu">
                   <div class="log-out" (click)="logout()">Đăng xuất</div>
               </nz-dropdown-menu>
