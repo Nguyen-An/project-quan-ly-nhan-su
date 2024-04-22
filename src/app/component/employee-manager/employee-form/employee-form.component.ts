@@ -60,8 +60,6 @@ export class EmployeeFormComponent {
   });
 
   submitForm(): void {
-    console.log(this.validateForm.value.dateStartCtrl);
-
     if (this.validateForm.valid) {
       let data = {
         userName: this.validateForm.value.userNameCtrl,
