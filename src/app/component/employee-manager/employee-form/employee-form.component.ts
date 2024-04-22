@@ -43,7 +43,7 @@ export class EmployeeFormComponent {
     dateEndCtrl: FormControl<string>;
 
   }> = this.fb.group({
-    userCodeCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],
+    userCodeCtrl: [{ value: '', disabled: true }, [Validators.required]],
     userNameCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required],],
     positionCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],
     statusCtrl: [{ value: '', disabled: this.isCheckDisabled() }, [Validators.required]],

@@ -6,7 +6,7 @@
                     <nz-form-control [nzErrorTip]="MSG.validate_required">
                         <nz-form-label class="label-input" nzRequired>Mã nhân viên</nz-form-label>
                         <nz-input-group>
-                            <input type="text" nz-input formControlName="userCodeCtrl" placeholder="Nhập"/>
+                            <input type="text" nz-input formControlName="userCodeCtrl" />
                         </nz-input-group>
                     </nz-form-control>
                 </nz-form-item>
@@ -16,7 +16,7 @@
                     <nz-form-control [nzErrorTip]="MSG.validate_required">
                         <nz-form-label class="label-input" nzRequired>Tên nhân viên</nz-form-label>
                         <nz-input-group>
-                            <input type="text" nz-input formControlName="userNameCtrl" placeholder="Nhập" />
+                            <input type="text" nz-input formControlName="userNameCtrl" placeholder="Nhập" maxlength="50" />
                         </nz-input-group>
                     </nz-form-control>
                 </nz-form-item>
@@ -55,7 +55,7 @@
                     <nz-form-control [nzErrorTip]="MSG.validate_required">
                         <nz-form-label class="label-input" nzRequired>Số điện thoại</nz-form-label>
                         <nz-input-group>
-                            <input type="text" nz-input formControlName="phoneCtrl" placeholder="Nhập" appOnlyNumber/>
+                            <input type="text" nz-input formControlName="phoneCtrl" placeholder="Nhập" appOnlyNumber maxlength="10"/>
                         </nz-input-group>
                     </nz-form-control>
                 </nz-form-item>
@@ -65,7 +65,7 @@
                     <nz-form-control [nzErrorTip]="MSG.validate_required">
                         <nz-form-label class="label-input" nzRequired>Địa chỉ</nz-form-label>
                         <nz-input-group>
-                            <input type="text" nz-input formControlName="addressCtrl" placeholder="Nhập" />
+                            <input type="text" nz-input formControlName="addressCtrl" placeholder="Nhập" maxlength="200"/>
                         </nz-input-group>
                     </nz-form-control>
                 </nz-form-item>
@@ -78,7 +78,7 @@
                     <nz-form-control [nzErrorTip]="MSG.validate_required">
                         <nz-form-label class="label-input" nzRequired>Email</nz-form-label>
                         <nz-input-group>
-                            <input type="text" nz-input formControlName="emailCtrl" placeholder="Nhập" />
+                            <input type="text" nz-input formControlName="emailCtrl" placeholder="Nhập" maxlength="100" />
                         </nz-input-group>
                     </nz-form-control>
                 </nz-form-item>
@@ -88,7 +88,7 @@
                     <nz-form-control [nzErrorTip]="MSG.validate_required">
                         <nz-form-label class="label-input" nzRequired>CCCD</nz-form-label>
                         <nz-input-group>
-                            <input type="text" nz-input formControlName="identityCardCtrl" placeholder="Nhập" appOnlyNumber/>
+                            <input type="text" nz-input formControlName="identityCardCtrl" placeholder="Nhập" appOnlyNumber maxlength="12"/>
                         </nz-input-group>
                     </nz-form-control>
                 </nz-form-item>
@@ -130,7 +130,7 @@
                     <nz-form-control [nzErrorTip]="MSG.validate_required">
                         <nz-form-label class="label-input" nzRequired>Mã hợp đồng lao động</nz-form-label>
                         <nz-input-group>
-                            <input type="text" nz-input formControlName="laborContractCtrl" placeholder="Nhập" />
+                            <input type="text" nz-input formControlName="laborContractCtrl" placeholder="Nhập" maxlength="15"/>
                         </nz-input-group>
                     </nz-form-control>
                 </nz-form-item>
@@ -140,7 +140,7 @@
                     <nz-form-control [nzErrorTip]="MSG.validate_required">
                         <nz-form-label class="label-input" nzRequired>Mức lương</nz-form-label>
                         <nz-input-group>
-                            <input type="text" nz-input formControlName="salaryCtrl" placeholder="Nhập" appOnlyNumber/>
+                            <input type="text" nz-input formControlName="salaryCtrl" placeholder="Nhập" appOnlyNumber maxlength="20"/>
                         </nz-input-group>
                     </nz-form-control>
                 </nz-form-item>
