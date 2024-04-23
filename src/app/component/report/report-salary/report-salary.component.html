@@ -7,7 +7,7 @@
                 <nz-form-item class="input-search">
                     <nz-form-control class="row">
                         <nz-input-group style="min-width: 200px;">
-                            <nz-select formControlName="statusCtrl" [nzPlaceHolder]="'Lọc theo mức lương'">
+                            <nz-select formControlName="searchCtrl" [nzPlaceHolder]="'Lọc theo mức lương'" (ngModelChange)="loadDataFile()">
                                 <nz-option *ngFor="let item of SALARY" [nzValue]="item.key" [nzLabel]="item.value"></nz-option>
                             </nz-select>
                         </nz-input-group>
@@ -35,19 +35,19 @@
                 <tr *ngFor="let data of fixedTable.data; index as i">
                     <td nzWidth="80px" nzLeft>{{ i + 1 + (currentPage-1)*10 }}</td>
                     <td nzWidth="140px" nzLeft>{{ data.userName }}</td>
-                    <td nzWidth="160px">{{ data.userCode }}</td>
+                    <td nzWidth="160px">{{ data.userCode + (i+1 + (currentPage-1)*10) }}</td>
                     <td nzWidth="200px">{{ data.email }}</td>
                     <td nzWidth="160px">{{ data.positionView }}</td>
                     <td nzWidth="130px">{{ data.phone }}</td>
                     <td nzWidth="200px">{{ data.address }}</td>
                     <td nzWidth="160px">{{ data.statusView }}</td>
-                    <td nzWidth="130px">{{ data.salary }}</td>
+                    <td nzWidth="130px">{{ formatCurrency(data.salary) }}</td>
                 </tr>
             </tbody>
         </nz-table>
         <div class="paging">
             <nz-pagination [(nzPageIndex)]="currentPage" [nzTotal]="total" [nzSize]="'small'"
-                [nzShowTotal]="totalTemplate" (nzPageIndexChange)="handlePageChange($event)"></nz-pagination>
+            [nzShowTotal]="totalTemplate" (nzPageIndexChange)="handlePageChange($event)"></nz-pagination>
         </div>
     </div>
     <ng-template #totalTemplate let-total>Tổng số: {{ total }} bản ghi</ng-template>
